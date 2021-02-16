@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Create new Outfit
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-8">
+				<div class="card">
+					<div class="card-header">
+						<h1>Create new Outfit</h1>
+					</div>
+					<div class="card-body">
+						<form action="{{path('outfit_store')}}" method="POST">
+							<div class="new">
+								<p>Master:</p>
+								<select name="outfits_master" class="form-control">
+									<option value="0">Select master</option>
+									{% for master in masters %}
+										<option value="{{master.id}}">{{master.name}}
+											{{master.surname}}</option>
+									{% endfor %}
+								</select>
+							</div>
+							<div class="form-group">
+								<p>Outfit type:</p>
+								<input type="text" class="form-control" name="outfit_type">
+							</div>
+							<div class="form-group">
+								<p>Outfit color:</p>
+								<input type="text" class="form-control" name="outfit_color">
+							</div>
+							<div class="form-group">
+								<p>Outfit size:</p>
+								<input type="text" class="form-control" name="outfit_size">
+							</div>
+							<div class="form-group">
+								<label>About</label>
+								<textarea name="outfit_about" id="summernote"></textarea>
+							</div>
+							<button type="submit" class="btn btn-primary">Add new Outfit</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

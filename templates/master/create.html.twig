@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Create new Master
+{% endblock %}
+
+{% block body %}
+
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-8">
+				<div class="card">
+					<div class="card-header">
+						<h1>Create new Master</h1>
+					</div>
+
+					<div class="card-body">
+						<form action="{{path('master_store')}}" method="POST">
+							<div class="form-group">
+								<label>Name:</label>
+								<input type="text" name="master_name" class="form-control" value="{{master_name}}">
+								<small class="form-text text-muted">Master name</small>
+							</div>
+							<div class="form-group">
+								<label>Surname:</label>
+								<input type="text" name="master_surname" class="form-control" value="{{master_surname}}">
+								<small class="form-text text-muted">Master surname</small>
+							</div>
+							<button type="submit" class="btn btn-primary">Add new Master</button>
+							{# csrf token #}
+							{# <input type="hidden" name="token" value="{{ csrf_token('create_author_bla') }}"/> #}
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

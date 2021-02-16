@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Outfit
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-8">
+				<div class="card">
+					<div class="card-header">
+						<h1 class="create">Edit Outfit</h1>
+					</div>
+					<div class="card-body">
+						<form action="{{path('outfit_update', {id: outfit.id})}}" method="POST">
+							<div class="form-group">
+								<label for="outfits_master">Master:</label>
+								<select class="form-control" name="outfits_mastert" id="outfits_master">
+									{% for master in masters %}
+										<option value="{{master.id}}" {% if master.id == outfit.masterId %} selected {% endif %}>{{master.name}}
+											{{master.surname}}</option>
+									{% endfor %}
+								</select>
+								<small class="form-text text-muted">Master</small>
+							</div>
+							<div class="form-group">
+								<label for="outfit_type">Outfit:</label>
+								<input class="form-control" type="text" name="outfit_type" value="{{outfit.type}}" id="outfit_type">
+								<small class="form-text text-muted">Outfit</small>
+							</div>
+							<button class="btn btn-primary" type="submit">Edit Outfit</button>
+							{# <input type="hidden" name="token" value="{{csrf_token('')}}"/> #}
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

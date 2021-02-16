@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Outfit List
+{% endblock %}
+
+{% block body %}
+
+
+	<div class="container-fluid">
+		<div class="row justify-content-center">
+			<div class="col-md-8">
+				<div class="card">
+					<div class="card-header">
+						<h1>Outfits</h1>
+					</div>
+
+					<div class="card-body">
+						List filter by:
+						<form action="{{path('outfit_index')}}" method="GET">
+							<div class="form-group">
+								<select name="master_id" class="form-control">
+									<option value="0">View All</option>
+									{% for master in masters %}
+										<option value="{{master.id}}" {% if masterId == master.id %} selected {% endif %}>{{master.name}}
+											{{master.surname}}</option>
+									{% endfor %}
+								</select>
+							</div>
+							<button type="submit" class="btn btn-dark">Filter IT!</button>
+							<a href="{{path('outfit_index')}}">CLEAR</a>
+						</form>
+						<div class="table-responsive-sm">
+							<table class="table table-bordered">
+								<thead class="thead-dark">
+									<tr>
+										<th scope="col">Master Name</th>
+										<th scope="col">Type</th>
+										{# <th scope="col">Grade</th> #}
+										<th scope="col"></th>
+									</tr>
+								</thead>
+								{% for outfit in outfits %}
+									<tbody>
+										<tr>
+											<td>
+												{{outfit.master.name}}
+												{{outfit.master.surname}}
+											</td>
+											<td>
+												{{outfit.type}}
+											</td>
+											<td class="list-group-item__line__buttons" role="group" aria-label="Basic example">
+												<a class="btn btn-secondary" href="{{path('outfit_edit', {id: outfit.id})}}">Edit</a>
+												<form action="{{path('outfit_delete', {id:outfit.id})}}" method="POST">
+													<button class="btn btn-primary" type="submit">Delete</button>
+												</form>
+											</td>
+										</tr>
+									</tbody>
+								{% endfor %}
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	{% endblock %}

@@ -1,0 +1,50 @@
+@import "~bootstrap/scss/bootstrap";
+
+body {
+    background-color: lightgray;
+}
+
+.btn-dark {
+    margin-bottom: 20px;
+}
+
+.list-group-item {
+    &__line {
+        display: flex;
+        justify-content: space-between;
+        span {
+            font-size: 5px;
+        }
+        &__buttons {
+            display: flex;
+            .btn {
+                float: right;
+                margin: 0px;
+            }
+        }
+    }
+}
+
+.btn-primary {
+    margin-top: 20px;
+}
+// .form-check-input.custom {
+//     margin-left: 10px;
+// }
+
+// .form-check.custom {
+//     padding-left: 0;
+// }
+
+// form.sort-form {
+//     display: flex;
+//     align-content: center;
+//     button {
+//         height: 38px;
+//         margin: 0 10px;
+//     }
+// }
+
+p {
+    margin-top: 20px;
+}
